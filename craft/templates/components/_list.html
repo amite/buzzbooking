@@ -1,0 +1,21 @@
+<h2>{{ entry.type }}</h2>
+  {{ entry.title }}
+  <p>Owner: {{ entry.owner.first().mobileNo }}</p>
+  <p>{{ entry.arrivalTime | date("H:i") }}</p>
+  <p>{{ entry.departureTime | date("H:i") }}</p>
+  <p>{{ entry.departure }}</p>
+  <p>{{ entry.destination }}</p>
+  <p>{{ entry.totalSeats }}</p>
+
+{% if entry.sleepers %}
+  <p>{{ entry.sleepers }}</p>
+{% endif %}
+
+{% for block in entry.itinerary.type('stops') %}
+  {{ block.pickupPoint }}
+  {{ block.pickupTiming }}
+{% endfor %}
+
+
+<p>Contact us: {{ contactInfo.contactNo }}</p>
+<p>Email us: {{ contactInfo.contactEmail }}</p>

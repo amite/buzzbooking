@@ -1,0 +1,25 @@
+{% extends "layouts/_site.html" %}
+
+{% set title = 'Agency List' %}
+
+{% block head %}
+  {{ parent() }}
+  <link rel="stylesheet" type="text/css" href="{{ siteUrl }}assets/css/plugin.css">
+{% endblock %}
+
+{% block content %}
+  {% set agencies = craft.entries.channel('agencies').limit(2) %}
+  <ul>
+  {% for agency in agencies %}
+      <li>
+      	{{ agency.title }}
+      	{{ agency.mobileNo}}
+      </li>
+  {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block scripts %}
+  {{ parent() }}
+  <script type="text/javascript" src="{{ siteUrl }}assets/js/plugin.js"></script>
+{% endblock %}
